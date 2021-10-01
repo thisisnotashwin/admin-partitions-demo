@@ -1,0 +1,1 @@
+# admin-partitions-demo
