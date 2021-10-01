@@ -1,0 +1,33 @@
+global:
+  enabled: false
+  enableConsulNamespaces: true
+  image: hashicorp/consul-enterprise:1.11.0-ent-alpha
+  adminPartitions:
+    enabled: true
+    name: "red"
+  tls:
+    enabled: true
+    caCert:
+      secretName: servers-consul-ca-cert
+      secretKey: tls.crt
+    caKey:
+      secretName: servers-consul-ca-key
+      secretKey: tls.key
+server:
+  enterpriseLicense:
+    secretName: license
+    secretKey: key
+externalServers:
+  enabled: true
+  hosts: [ "35.192.119.38" ]
+  tlsServerName: server.dc1.consul
+client:
+  enabled: true
+  exposeGossipPorts: true
+  join: [ "35.192.119.38" ]
+connectInject:
+  enabled: true
+  consulNamespaces:
+    mirroringK8S: true
+controller:
+  enabled: true
