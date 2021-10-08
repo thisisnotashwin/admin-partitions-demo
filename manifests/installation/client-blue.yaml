@@ -7,12 +7,18 @@ global:
     name: "blue"
   tls:
     enabled: true
+#    enableAutoEncrypt: true
     caCert:
       secretName: servers-consul-ca-cert
       secretKey: tls.crt
     caKey:
       secretName: servers-consul-ca-key
       secretKey: tls.key
+#  acls:
+#    manageSystemACLs: true
+#    bootstrapToken:
+#      secretName: servers-consul-partitions-acl-token
+#      secretKey: token
 server:
   enterpriseLicense:
     secretName: license
@@ -21,6 +27,7 @@ externalServers:
   enabled: true
   hosts: [ "35.192.119.38" ]
   tlsServerName: server.dc1.consul
+#  k8sAuthMethodHost: https://34.121.209.52
 client:
   enabled: true
   exposeGossipPorts: true

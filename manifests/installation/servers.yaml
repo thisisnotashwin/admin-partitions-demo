@@ -2,9 +2,12 @@ global:
   enableConsulNamespaces: true
   tls:
     enabled: true
+#    enableAutoEncrypt: true
   image: hashicorp/consul-enterprise:1.11.0-ent-alpha
   adminPartitions:
     enabled: true
+#  acls:
+#    manageSystemACLs: true
 server:
   exposeGossipAndRPCPorts: true
   enterpriseLicense:
